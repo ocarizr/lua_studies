@@ -5,7 +5,9 @@ Controller.InputCodes = {
     ["a"] = 2,
     ["s"] = 3,
     ["d"] = 4,
-    ["q"] = 0
+    ["n"] = 5,
+    ["p"] = 6,
+    ["q"] = 0,
 };
 
 Controller.GetInput = function(self)

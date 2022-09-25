@@ -1,6 +1,9 @@
+require("new");
+require("Table");
+
 Vector2 = Vector2 or {};
 
-local tag = "vector2";
+Vector2.BuildTag = "Vector2";
 
 Vector2._x = 0;
 Vector2._y = 0;
@@ -12,21 +15,17 @@ Vector2.Distance = function(self, other)
 end
 
 Vector2.Magnitude = function(self)
-    return math.sqrt(math.pow(self._y, 2) + math.pow(self._x, 2));
+    return math.sqrt((self._y ^ 2) + (self._x ^ 2));
 end
 
 Vector2.Normalized = function(self)
-    local newVector = {};
+    local ret = new(self.BuildTag);
 
-    for key, value in pairs(self) do
-        newVector[key] = value;
-    end
+    local length = self:Magnitude();
+    ret._x = self._x / length;
+    ret._y = self._y / length;
 
-    local length = newVector.Magnitude();
-    newVector._x = newVector._x / length;
-    newVector._y = newVector._y / length;
-
-    return newVector;
+    return ret;
 end
 
 Vector2.Normalize = function(self)
@@ -35,17 +34,10 @@ Vector2.Normalize = function(self)
     self._y = self._y / length;
 end
 
-require("new");
-
-RegisterConstructors(tag, function()
-    local ret = {};
+RegisterConstructors(Vector2.BuildTag, function()
+    local ret = Table.ShallowCopy(Vector2);
     ret._x = 0;
     ret._y = 0;
 
-    ret.Distance = Vector2.Distance;
-    ret.Magnitude = Vector2.Magnitude;
-    ret.Normalized = Vector2.Normalized;
-    ret.Normalize = Vector2.Normalize;
-
     return ret;
-end
+end );
