@@ -6,7 +6,7 @@ new = function(tag)
     return constructors[tag]();
 end
 
-RegisterConstructors = function(tag, ctor)
+RegisterConstructor = function(tag, ctor)
     assert(tag ~= nil or tag == "", "tab cannot be nil or empty");
     assert(ctor ~= nil, "ctor cannot be nil");
     assert(type(tag) == "string", "tag can only be a string");

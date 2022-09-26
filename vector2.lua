@@ -34,7 +34,7 @@ Vector2.Normalize = function(self)
     self._y = self._y / length;
 end
 
-RegisterConstructors(Vector2.BuildTag, function()
+RegisterConstructor(Vector2.BuildTag, function()
     local ret = Table.ShallowCopy(Vector2);
     ret._x = 0;
     ret._y = 0;
