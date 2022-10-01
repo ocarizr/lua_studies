@@ -2,7 +2,7 @@ require("Vector2");
 
 Application = Application or {};
 
-Application.PlayerPosition = new(Vector2.BuildTag);
+Application.PlayerPosition = MemoryManager.Build(Vector2);
 
 Application.ProcessInput = function(self, input)
     if input == nil then

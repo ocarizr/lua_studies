@@ -19,7 +19,7 @@ Vector2.Magnitude = function(self)
 end
 
 Vector2.Normalized = function(self)
-    local ret = new(self.BuildTag);
+    local ret = MemoryManager.Build(Vector2);
 
     local length = self:Magnitude();
     ret._x = self._x / length;
@@ -34,7 +34,7 @@ Vector2.Normalize = function(self)
     self._y = self._y / length;
 end
 
-RegisterConstructor(Vector2.BuildTag, function()
+MemoryManager.RegisterConstructor(Vector2.BuildTag, function()
     local ret = Table.ShallowCopy(Vector2);
     ret._x = 0;
     ret._y = 0;
