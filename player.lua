@@ -8,7 +8,7 @@ Player = Player or {};
 
 Player.BuildTag = "Player";
 
-Player._position = MemoryManager.Build(Vector2);
+Player._position = {};
 
 Player.MoveForward = function(self)
     move(self, {_x = 0, _y = 1});
@@ -27,7 +27,7 @@ Player.MoveRight = function(self)
 end
 
 MemoryManager.RegisterConstructor(Player.BuildTag, function()
-    local ret = Table.DeepCopy(Player);
+    local ret = Table.ShallowCopy(Player);
     ret._position = MemoryManager.Build(Vector2);
     return ret;
 end );
