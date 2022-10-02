@@ -22,6 +22,10 @@ Vector2.Normalized = function(self)
     local ret = MemoryManager.Build(Vector2);
 
     local length = self:Magnitude();
+    if length == 0 then
+        return 0;
+    end
+
     ret._x = self._x / length;
     ret._y = self._y / length;
 
@@ -30,8 +34,11 @@ end
 
 Vector2.Normalize = function(self)
     local length = self.Magnitude();
-    self._x = self._x / length;
-    self._y = self._y / length;
+
+    if length ~= 0 then
+        self._x = self._x / length;
+        self._y = self._y / length;
+    end
 end
 
 MemoryManager.RegisterConstructor(Vector2.BuildTag, function()
