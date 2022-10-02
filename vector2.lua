@@ -23,7 +23,7 @@ Vector2.Normalized = function(self)
 
     local length = self:Magnitude();
     if length == 0 then
-        return 0;
+        return ret;
     end
 
     ret._x = self._x / length;

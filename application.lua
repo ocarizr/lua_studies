@@ -1,35 +1,35 @@
-require("Vector2");
+require("Player");
 
 local inputFunc = {
     [1] = function(self)
-        self.PlayerPosition._y = self.PlayerPosition._y + 1;
+        self.Player:MoveForward();
     end,
 
     [2] = function(self)
-        self.PlayerPosition._x = self.PlayerPosition._x - 1;
+        self.Player:MoveLeft();
     end,
 
     [3] = function(self)
-        self.PlayerPosition._y = self.PlayerPosition._y - 1;
+        self.Player:MoveBackward();
     end,
 
     [4] = function(self)
-        self.PlayerPosition._x = self.PlayerPosition._x + 1;
+        self.Player:MoveRight();
     end,
 
     [5] = function(self)
-        local vec = self.PlayerPosition:Normalized();
+        local vec = self.Player._position:Normalized();
         print("Normalized direction: ["..vec._x..", "..vec._y.."]");
     end,
 
     [6] = function(self)
-        print("Position: ["..self.PlayerPosition._x..", "..self.PlayerPosition._y.."]");
+        print("Position: ["..self.Player._position._x..", "..self.Player._position._y.."]");
     end,
 };
 
 Application = Application or {};
 
-Application.PlayerPosition = MemoryManager.Build(Vector2);
+Application.Player = MemoryManager.Build(Player);
 
 Application.ProcessInput = function(self, input)
     if input == nil then
