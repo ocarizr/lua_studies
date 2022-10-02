@@ -19,11 +19,11 @@ local inputFunc = {
 
     [5] = function(self)
         local vec = self.Player._position:Normalized();
-        print("Normalized direction: ["..vec._x..", "..vec._y.."]");
+        print("Normalized direction: "..vec);
     end,
 
     [6] = function(self)
-        print("Position: ["..self.Player._position._x..", "..self.Player._position._y.."]");
+        print("Position: "..self.Player._position);
     end,
 };
 
